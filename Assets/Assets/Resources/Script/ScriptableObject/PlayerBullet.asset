@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2371d2316f66685448a62171003b3cbd, type: 3}
   m_Name: PlayerBullet
   m_EditorClassIdentifier: 
-  actorName: 
-  attackType: 0
-  description: 
-  health: 0
-  speed: 0
-  hitPower: 0
-  actor: {fileID: 0}
+  actorName: player_bullet
+  attackType: 3
+  description: Players basic bullet
+  health: 1
+  speed: 700
+  hitPower: 1
+  actor: {fileID: 1058467786284532, guid: ee50c60c78afa5745b7e8772ee12878f, type: 2}
   actorsBullets: {fileID: 0}

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IActorTemplateTemplate
+﻿public interface InterfaceActorTemplate
 {
 	int SendDamage();
 	void TakeDamage(int incomingDamage);

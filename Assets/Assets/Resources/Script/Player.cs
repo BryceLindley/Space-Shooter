@@ -35,8 +35,8 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
     void Update()
     {
-        Movement();
-        Attack();
+       // Movement();
+       // Attack();
     }
 
     //The code we have just entered assigns values from the player's SOActorModel ScriptableObject asset we made earlier
@@ -49,6 +49,21 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         travelSpeed = actorModel.speed;
         hitPower = actorModel.hitPower;
         fire = actorModel.actorsBullets;
+    }
+
+    int InterfaceActorTemplate.SendDamage()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void InterfaceActorTemplate.TakeDamage(int incomingDamage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void InterfaceActorTemplate.Die()
+    {
+        throw new System.NotImplementedException();
     }
 }
 

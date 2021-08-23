@@ -54,6 +54,7 @@
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
  <Reference Include="UnityEngine.UI">

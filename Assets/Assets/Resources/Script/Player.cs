@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour, InterfaceActorTemplate
@@ -35,8 +36,8 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
     void Update()
     {
-       // Movement();
-       // Attack();
+        // Movement();
+        // Attack();
     }
 
     //The code we have just entered assigns values from the player's SOActorModel ScriptableObject asset we made earlier
@@ -49,6 +50,15 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         travelSpeed = actorModel.speed;
         hitPower = actorModel.hitPower;
         fire = actorModel.actorsBullets;
+    }
+
+    public void TakeDamage(int incomingDamage)
+    {
+        health -= incomingDamage;
+    }
+    public int SendDamage()
+    {
+        return hitPower;
     }
 
     int InterfaceActorTemplate.SendDamage()
@@ -65,6 +75,90 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     {
         throw new System.NotImplementedException();
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            if (health >= 1)
+            {
+                if (transform.Find("energy +1(Clone)"))
+                {
+                    Destroy(transform.Find("energy +1(Clone)").gameObject);
+                    health -= other.GetComponent<InterfaceActorTemplate>
+                      ().SendDamage();
+                }
+                else
+                {
+                    health -= 1;
+                }
+            }
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
+    void Movement()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            if (transform.localPosition.x < width + width / 0.9f)
+            {
+                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal")* Time.deltaTime * travelSpeed, 0, 0);
+            }
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            if (transform.localPosition.x > width + width / 6)
+            {
+                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
+            }
+        }
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            if (transform.localPosition.y > -height / 3f)
+        {
+            transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
+        }
+            if (Input.GetAxisRaw("Vertical") > 0)
+            {
+                if (transform.localPosition.y < height / 2.5f)
+                {
+                    transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
+                }
+            }
+        }       
+    }
+
+    public void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = GameObject.Instantiate(fire, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+            bullet.transform.SetParent(_Player.transform);
+            bullet.transform.localScale = new Vector3(7, 7, 7);
+        }
+    }
 }
+
+
+
+
+
+
+
+    
+
+
+
+
 
 

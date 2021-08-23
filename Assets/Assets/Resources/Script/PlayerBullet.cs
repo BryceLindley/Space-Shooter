@@ -2,15 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour {
+public class PlayerBullet : MonoBehaviour, InterfaceActorTemplate {
 
-	// Use this for initialization
-	void Start () {
-		
+	GameObject actor;
+	int hitPower;
+	int health;
+	int travelSpeed;
+	[SerializeField]
+	SOActorModel bulletModel;
+
+	void Awake()
+	{
+		ActorStats(bulletModel);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public int SendDamage()
+	{
+		return hitPower;
 	}
+	public void TakeDamage(int incomingDamage)
+	{
+		health -= incomingDamage;
+	}
+
+	public void Die()
+    {
+		Destroy(this.gameObject);
+    }
+
+	public void ActorStats(SOActorModel actorModel)
+	{
+		hitPower = actorModel.hitPower;
+		health = actorModel.health;
+		travelSpeed = actorModel.speed;
+		actor = actorModel.actor;
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Enemy")
+		{
+			if (other.GetComponent<InterfaceActorTemplate>() != null)
+			{
+				if (health >= 1)
+				{
+					health -= other.GetComponent<InterfaceActorTemplate>
+					  ().SendDamage();
+				}
+				if (health <= 0)
+				{
+					Die();
+				}
+			}
+		}
+	}
+
 }

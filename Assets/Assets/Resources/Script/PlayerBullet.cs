@@ -16,6 +16,12 @@ public class PlayerBullet : MonoBehaviour, InterfaceActorTemplate {
 		ActorStats(bulletModel);
 	}
 
+	void Update()
+	{
+		transform.position += new Vector3(travelSpeed, 0, 0) * Time.deltaTime;
+	}
+
+	
 	public int SendDamage()
 	{
 		return hitPower;
@@ -46,8 +52,7 @@ public class PlayerBullet : MonoBehaviour, InterfaceActorTemplate {
 			{
 				if (health >= 1)
 				{
-					health -= other.GetComponent<InterfaceActorTemplate>
-					  ().SendDamage();
+					health -= other.GetComponent<InterfaceActorTemplate>().SendDamage();
 				}
 				if (health <= 0)
 				{
@@ -57,4 +62,11 @@ public class PlayerBullet : MonoBehaviour, InterfaceActorTemplate {
 		}
 	}
 
+	void OnBecameInvisible()
+	{
+		Destroy(gameObject);
+	}
 }
+
+
+

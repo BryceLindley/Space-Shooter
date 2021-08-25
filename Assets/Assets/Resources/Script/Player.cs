@@ -93,12 +93,12 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
     void Movement()
     {
-        
+
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             if (transform.localPosition.x < width + width / 0.9f)
             {
-                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal")* Time.deltaTime * travelSpeed, 0, 0);
+                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
@@ -108,21 +108,22 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
         }
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            if (transform.localPosition.y > -height / 3f)
+        if (Input.GetAxisRaw("Vertical") < 0 && transform.localPosition.y < 150)
+
         {
             transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
         }
-            if (Input.GetAxisRaw("Vertical") > 0)
+
+        else
+        {
+
             {
-                if (transform.localPosition.y < height / 2.5f)
-                {
-                    transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
-                }
+                transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
-        }       
+        }
+        
     }
+    
 
     public void Attack()
     {

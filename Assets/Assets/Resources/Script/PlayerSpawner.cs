@@ -17,7 +17,7 @@ public class PlayerSpawner : MonoBehaviour {
 		
 	}
 
-	void CreatePlayer()
+	GameObject CreatePlayer()
 	{
 		//CREATE PLAYER
 		actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
@@ -34,6 +34,7 @@ public class PlayerSpawner : MonoBehaviour {
 		playerShip.transform.SetParent(this.transform);
 		// reset the player ship's position
 		playerShip.transform.position = Vector3.zero;
+		return playerShip;
 	}
 }
 

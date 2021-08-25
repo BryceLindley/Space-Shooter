@@ -14,9 +14,9 @@ MonoBehaviour:
   actorName: Player
   attackType: 1
   description: Player Character
-  health: 10
-  speed: 5
-  hitPower: 2
+  health: 1
+  speed: 120
+  hitPower: 1
   actor: {fileID: 100000, guid: 7b5b3b1fee00e9c4ebfbe199f640a655, type: 3}
   actorsBullets: {fileID: 1058467786284532, guid: ee50c60c78afa5745b7e8772ee12878f,
     type: 2}

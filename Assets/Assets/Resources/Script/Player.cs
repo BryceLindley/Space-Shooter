@@ -1,6 +1,4 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour, InterfaceActorTemplate
 {
@@ -9,6 +7,12 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     int hitPower;
     GameObject actor;
     GameObject fire;
+    // reference to the _Player game object in the scene
+    GameObject _Player;
+    float width;
+    float height;
+    private float horizontalInput;
+    private float verticalInput;
 
     //The two public properties of Health and Fire are there to give access 
     //to our two private health and fire variables from other classes that require access.
@@ -22,10 +26,6 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         get { return fire; }
         set { fire = value; }
     }
-    // reference to the _Player game object in the scene
-    GameObject _Player;
-    float width;
-    float height;
 
     void Start()
     {
@@ -36,8 +36,8 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
     void Update()
     {
-        // Movement();
-        // Attack();
+         Movement();
+         Attack();
     }
 
     //The code we have just entered assigns values from the player's SOActorModel ScriptableObject asset we made earlier
@@ -59,21 +59,6 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     public int SendDamage()
     {
         return hitPower;
-    }
-
-    int InterfaceActorTemplate.SendDamage()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    void InterfaceActorTemplate.TakeDamage(int incomingDamage)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    void InterfaceActorTemplate.Die()
-    {
-        throw new System.NotImplementedException();
     }
 
 
@@ -101,13 +86,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Destroy(this.gameObject);
     }
 
     void Movement()
     {
+        
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             if (transform.localPosition.x < width + width / 0.9f)

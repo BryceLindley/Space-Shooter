@@ -58,6 +58,7 @@
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	
+	static GameManager instance;
+	public static GameManager Instance
+    {
+		get { return instance; }
+    }
 	
 
   
@@ -18,6 +22,13 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void Awake ()
+    {
+		CheckGameManagerIsInTheScene();
+    }
+
+
 
 	void CameraSetup() {
 		GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -37,6 +48,22 @@ public class GameManager : MonoBehaviour {
 		dirLight.transform.eulerAngles = new Vector3(50, -30, 0);
 		dirLight.GetComponent<Light>().color = new Color32(152, 204, 255, 255);
 	}
+
+	void CheckGameManagerIsInTheScene()
+    {
+        {
+			if(instance == null)
+            {
+				instance = this;
+            }
+            else
+            {
+				Destroy(this.gameObject);
+            }
+			DontDestroyOnLoad(this);
+        }
+
+    }
 
 	
 }

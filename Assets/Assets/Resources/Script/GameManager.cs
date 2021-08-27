@@ -5,30 +5,25 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	static GameManager instance;
+	public static int currentScene = 0;
+	public static int gameLevelScene = 3;
+	bool died = false;
+	public bool Died
+	{
+		get { return died; }
+		set { died = value; }
+	}
 	public static GameManager Instance
     {
 		get { return instance; }
     }
-	
 
-  
-	// Use this for initialization
-	  void Start () {
-		CameraSetup();
-		LightSetup();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	void Awake ()
-    {
+	void Awake()
+	{
 		CheckGameManagerIsInTheScene();
-    }
-
-
+		currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+		LightandCameraSetup(currentScene);
+	}
 
 	void CameraSetup() {
 		GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -65,5 +60,20 @@ public class GameManager : MonoBehaviour {
 
     }
 
-	
+	void LightandCameraSetup(int sceneNumber)
+	{
+		switch (sceneNumber)
+		{
+			//testLevel, Level1, Level2, Level3
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+				{
+					LightSetup();
+					CameraSetup();
+					break;
+				}
+		}
+	}
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyWave : MonoBehaviour, InterfaceActorTemplate {
 
-
 	int health;
 	int travelSpeed;
 	int fireSpeed;
 	int hitPower;
+	int score;
 	//wave enemy
 	[SerializeField]
 	float verticalSpeed = 2;
@@ -16,7 +16,6 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate {
 	float verticalAmplitude = 1;
 	Vector3 sineVer;
 	float time;
-
 	
     // Use this for initialization
 	  void Start () {
@@ -33,6 +32,7 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate {
 		health = actorModel.health;
 		travelSpeed = actorModel.speed;
 		hitPower = actorModel.hitPower;
+		score = actorModel.score;
 	}
 
 	public void Die()
@@ -47,12 +47,13 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate {
 		{
 			if (health >= 1)
 			{
-				health -= other.GetComponent<InterfaceActorTemplate>
-				  ().SendDamage();
+				health -= other.GetComponent<InterfaceActorTemplate>().SendDamage();
 			}
 			if (health <= 0)
 			{
+				
 				Die();
+				GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
 			}
 		}
 	}

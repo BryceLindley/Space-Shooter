@@ -28,6 +28,8 @@ public class PlayerSpawner : MonoBehaviour {
 		playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);
 		// sets the size(scale) of the ship on all axis
 		playerShip.transform.localScale = new Vector3(60, 60, 60);
+		// sets the size(scale) of the thruster
+		playerShip.GetComponentInChildren<ParticleSystem>().transform.localScale = new Vector3(25, 25, 25);
 		// rename instatiated ship to Player instead of (Clone)
 		playerShip.name = "Player";
 		// make the playerShip game object a child of the _Player game object in the Hierarchy window so we can find it

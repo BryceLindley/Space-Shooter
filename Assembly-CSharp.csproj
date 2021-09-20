@@ -62,6 +62,9 @@
      <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScoreManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\SOShopSelection.cs" />
+     <Compile Include="Assets\Resources\Script\BShotComponent.cs" />
+     <Compile Include="Assets\Resources\Script\PlayerBulletsShot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

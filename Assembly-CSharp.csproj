@@ -58,9 +58,11 @@
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\PlayerShipBuild.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScoreManager.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\ShopPiece.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOShopSelection.cs" />
      <Compile Include="Assets\Resources\Script\BShotComponent.cs" />

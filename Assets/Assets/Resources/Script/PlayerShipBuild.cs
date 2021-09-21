@@ -9,11 +9,26 @@ public class PlayerShipBuild : MonoBehaviour {
 	GameObject target;
 	GameObject tmpSelection;
 	GameObject textBoxPanel;
+	[SerializeField]
+	GameObject[] visualWeapons;
+	[SerializeField]
+	SOActorModel defaultPlayerShip;
+	GameObject playerShip;
+	GameObject buyButton;
+	GameObject bankObj;
+	int bank = 600;
+	bool purchaseMade = false;
 
 	// Use this for initialization
 	void Start () {
 		TurnOffSelectionHighlights();
 		textBoxPanel = GameObject.Find("textBoxPanel");
+		purchaseMade = false;
+		bankObj = GameObject.Find("bank");
+		bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
+		buyButton = textBoxPanel.transform.Find("BUY ?").gameObject;
+		TurnOffPlayerShipVisuals();
+		PreparePlayerShipForUpgrade();
 	}
 
 	void Update()
@@ -59,6 +74,20 @@ public class PlayerShipBuild : MonoBehaviour {
 					TurnOffSelectionHighlights();
 					Select();
 					UpdateDescriptionBox();
+
+					//Not Already Sold
+					if (target.transform.Find("itemText").GetComponent<TextMesh>().text != "SOLD")
+                    {
+						//can afford
+						Affordable();
+
+						//can not afford
+						LackOfCredits();
+                    }
+					else if (target.transform.Find("itemText").GetComponent<TextMesh>().text == "SOLD")
+                    {
+						SoldOut();
+                    }
 				}
 			}
 		}

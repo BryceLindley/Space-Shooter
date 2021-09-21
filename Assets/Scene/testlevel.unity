@@ -114,40 +114,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &9829440 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1140640989303674, guid: 719e15d0742034c4e95c1ed63e7a2d66,
-    type: 2}
-  m_PrefabInternal: {fileID: 283144636}
---- !u!114 &9829441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 9829440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopSelection: {fileID: 11400000, guid: 11093bb1c074e3f4f98447fbb78ae8c7, type: 2}
---- !u!1 &221509925 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1305060617661294, guid: 719e15d0742034c4e95c1ed63e7a2d66,
-    type: 2}
-  m_PrefabInternal: {fileID: 283144636}
---- !u!114 &221509926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 221509925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopSelection: {fileID: 11400000, guid: 5331cbf4286e1e44b936ead2a4cfac3a, type: 2}
 --- !u!1001 &283144636
 Prefab:
   m_ObjectHideFlags: 0
@@ -190,23 +156,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 719e15d0742034c4e95c1ed63e7a2d66, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &416500006 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1560464802593606, guid: 719e15d0742034c4e95c1ed63e7a2d66,
-    type: 2}
-  m_PrefabInternal: {fileID: 283144636}
---- !u!114 &416500007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 416500006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopSelection: {fileID: 11400000, guid: 96ee644622d1c374b95d863ce2c30d95, type: 2}
 --- !u!1 &629833985
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -350}
+  m_LocalPosition: {x: 0, y: 0, z: -750}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

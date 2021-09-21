@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1002571666978056
 GameObject:
   m_ObjectHideFlags: 1
@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 33065164324460052}
   - component: {fileID: 64910005983004736}
   - component: {fileID: 23766788315089172}
+  - component: {fileID: 114204604490221482}
   m_Layer: 0
   m_Name: UPGRADE_02
   m_TagString: Untagged
@@ -254,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1207256553438940
 GameObject:
   m_ObjectHideFlags: 1
@@ -299,6 +300,7 @@ GameObject:
   - component: {fileID: 33351969845415940}
   - component: {fileID: 64269435498805342}
   - component: {fileID: 23336768004555640}
+  - component: {fileID: 114590558756278324}
   m_Layer: 0
   m_Name: UPGRADE_00
   m_TagString: Untagged
@@ -339,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1428807205164630
 GameObject:
   m_ObjectHideFlags: 1
@@ -421,6 +423,7 @@ GameObject:
   - component: {fileID: 33147193772192770}
   - component: {fileID: 64617446818638504}
   - component: {fileID: 23228543622714434}
+  - component: {fileID: 114641254180289070}
   m_Layer: 0
   m_Name: UPGRADE_01
   m_TagString: Untagged
@@ -444,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1572675948109272
 GameObject:
   m_ObjectHideFlags: 1
@@ -489,6 +492,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4065686029324144}
+  - component: {fileID: 114749811012893126}
   m_Layer: 0
   m_Name: shop
   m_TagString: Untagged
@@ -3305,6 +3309,64 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114204604490221482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1140640989303674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopSelection: {fileID: 11400000, guid: 11093bb1c074e3f4f98447fbb78ae8c7, type: 2}
+--- !u!114 &114590558756278324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305060617661294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopSelection: {fileID: 11400000, guid: 5331cbf4286e1e44b936ead2a4cfac3a, type: 2}
+--- !u!114 &114641254180289070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560464802593606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1064bc4277288b54481042fab3b8f567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopSelection: {fileID: 11400000, guid: 96ee644622d1c374b95d863ce2c30d95, type: 2}
+--- !u!114 &114749811012893126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623120871451580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d9ab17012d8b27448f43a4185123d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopButtons:
+  - {fileID: 1142615361867556}
+  - {fileID: 1428807205164630}
+  - {fileID: 1957370818327308}
+  - {fileID: 1647074194314342}
+  - {fileID: 1519338210582350}
+  - {fileID: 1572675948109272}
+  - {fileID: 1739287308586174}
+  - {fileID: 1143424165573212}
+  - {fileID: 1000621732617846}
+  - {fileID: 1199454306863072}
 --- !u!212 &212241787091004940
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -3383,7 +3445,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4406a554de7d3994cb24b896cacde1ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fc6dbc8c3b0215419cdc617b1f3a785, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3427,7 +3489,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4406a554de7d3994cb24b896cacde1ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ed5376d571723c468eb82670c16757d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

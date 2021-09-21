@@ -8,10 +8,12 @@ public class PlayerShipBuild : MonoBehaviour {
 	GameObject[] shopButtons;
 	GameObject target;
 	GameObject tmpSelection;
+	GameObject textBoxPanel;
 
 	// Use this for initialization
 	void Start () {
 		TurnOffSelectionHighlights();
+		textBoxPanel = GameObject.Find("textBoxPanel");
 	}
 
 	void Update()
@@ -56,6 +58,7 @@ public class PlayerShipBuild : MonoBehaviour {
 				{
 					TurnOffSelectionHighlights();
 					Select();
+					UpdateDescriptionBox();
 				}
 			}
 		}
@@ -71,5 +74,16 @@ public class PlayerShipBuild : MonoBehaviour {
 		tmpSelection = target.transform.Find
 		   ("SelectionQuad").gameObject; tmpSelection.SetActive(true);
 	}
+
+
+	// The UpdateDescriptionBox method will grab the selected button's asset file variable
+	// content, iconName and description, and apply it to the TextMesh text component of textboxPanel.
+	  void UpdateDescriptionBox()
+	{
+		textBoxPanel.transform.Find("name").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
+		textBoxPanel.transform.Find("desc").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;
+	}
+
+
 
 }

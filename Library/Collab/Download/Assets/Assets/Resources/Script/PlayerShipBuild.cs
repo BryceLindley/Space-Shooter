@@ -93,10 +93,6 @@ public class PlayerShipBuild : MonoBehaviour {
                 {
 					BuyItem();
                 }
-				else if(target.name == "START")
-                {
-					StartGame();
-                }
 			}
 		}
 	}
@@ -166,7 +162,7 @@ public class PlayerShipBuild : MonoBehaviour {
 	//we assign it the default PlayerShip asset file that we dragged and dropped into the scriptable object field.
 	void PreparePlayerShipForUpgrade()
     {
-		playerShip = GameObject.Instantiate(Resources.Load("Prefab/Player/playership")) as GameObject;
+		playerShip = GameObject.Instantiate(Resources.Load("Prefab/Player/Player_Ship")) as GameObject;
 		playerShip.GetComponent<Player>().enabled = false;
 		playerShip.transform.position = new Vector3(0, 10000, 0);
 		playerShip.GetComponent<InterfaceActorTemplate>().ActorStats(defaultPlayerShip);
@@ -204,20 +200,6 @@ public class PlayerShipBuild : MonoBehaviour {
 		GameObject shipItem = GameObject.Instantiate(Resources.Load("Prefab/Player/" + upgrade)) as GameObject;
 		shipItem.transform.SetParent(playerShip.transform); shipItem.transform.localPosition = Vector3.zero;
 	}
-
-	void StartGame()
-    {
-        if (purchaseMade)
-        {
-			playerShip.name = "UpgradeShip";
-            if (playerShip.transform.Find("energy+1(Clone)"))
-            {
-				playerShip.GetComponent<Player>().Health = 2;
-            }
-			DontDestroyOnLoad(playerShip);
-        }
-		UnityEngine.SceneManagement.SceneManager.LoadScene("testLevel");
-    }
 
 
 }

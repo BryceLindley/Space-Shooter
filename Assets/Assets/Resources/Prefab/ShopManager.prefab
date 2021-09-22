@@ -650,12 +650,12 @@ GameObject:
   - component: {fileID: 23215991069954692}
   - component: {fileID: 65339493644033884}
   m_Layer: 0
-  m_Name: BUY ?
+  m_Name: BUY?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1825933693003088
 GameObject:
   m_ObjectHideFlags: 1
@@ -3367,6 +3367,11 @@ MonoBehaviour:
   - {fileID: 1143424165573212}
   - {fileID: 1000621732617846}
   - {fileID: 1199454306863072}
+  visualWeapons:
+  - {fileID: 1556134829789958}
+  - {fileID: 1950579529129072}
+  - {fileID: 1088013412868314}
+  defaultPlayerShip: {fileID: 11400000, guid: e33fe1a0b86ab0d44b162878503c46e4, type: 2}
 --- !u!212 &212241787091004940
 SpriteRenderer:
   m_ObjectHideFlags: 1

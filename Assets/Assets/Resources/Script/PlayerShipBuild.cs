@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Monetization;
 
 
 
@@ -107,7 +108,7 @@ public class PlayerShipBuild : MonoBehaviour
 				}
 				else if (target.name == "WATCH AD")
 				{
-					//WatchAdvert();
+					WatchAdvert();
 				}
 			}
 		}
@@ -215,7 +216,8 @@ public class PlayerShipBuild : MonoBehaviour
 	void UpgradeToShip(string upgrade)
 	{
 		GameObject shipItem = GameObject.Instantiate(Resources.Load("Prefab/Player/" + upgrade)) as GameObject;
-		shipItem.transform.SetParent(playerShip.transform); shipItem.transform.localPosition = Vector3.zero;
+		shipItem.transform.SetParent(playerShip.transform);
+		shipItem.transform.localPosition = Vector3.zero;
 	}
 
 	void StartGame()
@@ -229,7 +231,7 @@ public class PlayerShipBuild : MonoBehaviour
 			}
 			DontDestroyOnLoad(playerShip);
 		}
-		UnityEngine.SceneManagement.SceneManager.LoadScene("testLevel");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("testlevel");
 	}
 
 	void CheckPlatform()
@@ -242,10 +244,10 @@ public class PlayerShipBuild : MonoBehaviour
 		{
 			gameId = "REPLACE-THIS-TEXT-FOR-YOUR-ANDROID-GAMEID";
 		}
-		//Monetization.Initialize(gameId, false);
+		Monetization.Initialize(gameId, false);
 	}
 
-	/*void WatchAdvert()
+	void WatchAdvert()
 	{
 		if (Application.internetReachability != NetworkReachability.NotReachable)
 		{
@@ -258,9 +260,10 @@ public class PlayerShipBuild : MonoBehaviour
 		StartCoroutine(WaitForAd());
 	}
 
-	
+
 	IEnumerator WaitForAd()
-	{ string placementId = placementId_rewardedvideo;
+	{
+		string placementId = placementId_rewardedvideo;
 		while (!Monetization.IsReady(placementId))
 		{
 			yield return null;
@@ -272,8 +275,20 @@ public class PlayerShipBuild : MonoBehaviour
 		{
 			ad.Show(AdFinished);
 		}
-	*/
+	}
+
+	void AdFinished(ShowResult result)
+	{
+		if (result == ShowResult.Finished)
+		{
+			bank += 300;
+			bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
+			TurnOffSelectionHighlights();
+		}
+	}
 }
+	
+
 
 
 

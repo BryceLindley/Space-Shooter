@@ -6,20 +6,22 @@ public class PlayerSpawner : MonoBehaviour {
 	//that will contain values for the player ship, and the second variable will hold our player ship once it's created from our CreatePlayer method.
 	SOActorModel actorModel;
 	GameObject playerShip;
-  
+	bool upgradedShip = false;
+
 	// Use this for initialization
-	  void Start () {
+	void Start() {
 		CreatePlayer();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		GetComponentInChildren<Player>().enabled = true;
 	}
 
-	GameObject CreatePlayer()
+	// Update is called once per frame
+	void Update() {
+
+	}
+
+	void CreatePlayer()
 	{
-		//CREATE PLAYER
+		/*//CREATE PLAYER
 		actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
 		playerShip = GameObject.Instantiate(actorModel.actor) as GameObject;
 		playerShip.GetComponent<Player>().ActorStats(actorModel);
@@ -37,6 +39,34 @@ public class PlayerSpawner : MonoBehaviour {
 		// reset the player ship's position
 		playerShip.transform.position = Vector3.zero;
 		return playerShip;
+		*/
+
+		//been shopping
+		if (GameObject.Find("UpgradedShip"))
+		{
+			upgradedShip = true;
+		}
+
+		//not shopped or died
+		//default ship build
+		if (!upgradedShip || GameManager.Instance.Died)
+		{
+			GameManager.Instance.Died = false;
+			actorModel = Object.Instantiate(Resources.Load("Script/ScriptableObject/Player_Default")) as SOActorModel;
+			playerShip = GameObject.Instantiate(actorModel.actor, this.transform.position, Quaternion.Euler(270, 180, 0)) as GameObject;
+			playerShip.GetComponent<InterfaceActorTemplate>().ActorStats(actorModel);
+		}
+		else
+		{
+			playerShip = GameObject.Find("UpgradedShip");
+		}
+			playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);
+			playerShip.transform.localScale = new Vector3(60, 60, 60);
+			// Turn the Player script off so the player can't control the ship while it carries out its intro animation
+			playerShip.GetComponentInChildren <ParticleSystem>().transform.localScale = new Vector3(25, 25, 25);
+			playerShip.name = "Player";
+			playerShip.transform.SetParent(this.transform);
+			playerShip.transform.position = Vector3.zero;
 	}
 }
 

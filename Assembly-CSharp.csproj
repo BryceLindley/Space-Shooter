@@ -52,12 +52,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Assets\Resources\Script\BasicEnemyRotate.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\BShotComponent.cs" />
      <Compile Include="Assets\Assets\Resources\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\EnemyWave.cs" />
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\PlayerBulletsShot.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerShipBuild.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
@@ -65,8 +67,7 @@
      <Compile Include="Assets\Assets\Resources\Script\ShopPiece.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOShopSelection.cs" />
-     <Compile Include="Assets\Resources\Script\BShotComponent.cs" />
-     <Compile Include="Assets\Resources\Script\PlayerBulletsShot.cs" />
+     <None Include="Assets\UnityAds\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -130,8 +131,11 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/Bounce/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ <Reference Include="UnityEngine.Advertisements.Editor">
+ <HintPath>C:/Users/Bounce/Desktop/Unity Projects/Space Shooter/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Monetization.Editor">
+ <HintPath>C:/Users/Bounce/Desktop/Unity Projects/Space Shooter/Assets/UnityAds/UnityEngine.Monetization.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Users/Bounce/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>

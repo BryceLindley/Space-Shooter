@@ -91,4 +91,11 @@ public class PlayerTransition : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, point, fractionOfJourney);
         }
     }
+
+	void SpeedOff()
+    {
+		transform.Translate(Vector3.left * Time.deltaTime * 800);
+
+
+    }
 }

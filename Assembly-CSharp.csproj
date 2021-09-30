@@ -57,6 +57,7 @@
      <Compile Include="Assets\Assets\Resources\Script\EnemyWave.cs" />
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\LoadSceneComponent.cs" />
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBulletsShot.cs" />
@@ -68,7 +69,6 @@
      <Compile Include="Assets\Assets\Resources\Script\ShopPiece.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOShopSelection.cs" />
-     <Compile Include="Assets\Resources\Script\LoadSceneComponent.cs" />
      <Compile Include="Assets\Resources\Script\TitleComponent.cs" />
      <None Include="Assets\UnityAds\link.xml" />
  <Reference Include="UnityEngine.UI">

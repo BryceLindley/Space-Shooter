@@ -62,11 +62,14 @@
      <Compile Include="Assets\Assets\Resources\Script\PlayerBulletsShot.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerShipBuild.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\PlayerTransition.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScoreManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ShopPiece.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOActorModel.cs" />
      <Compile Include="Assets\Assets\Resources\Script\SOShopSelection.cs" />
+     <Compile Include="Assets\Resources\Script\LoadSceneComponent.cs" />
+     <Compile Include="Assets\Resources\Script\TitleComponent.cs" />
      <None Include="Assets\UnityAds\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

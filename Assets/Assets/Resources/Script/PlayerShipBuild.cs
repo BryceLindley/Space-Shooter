@@ -180,7 +180,7 @@ public class PlayerShipBuild : MonoBehaviour
 	//we assign it the default PlayerShip asset file that we dragged and dropped into the scriptable object field.
 	void PreparePlayerShipForUpgrade()
 	{
-		playerShip = GameObject.Instantiate(Resources.Load("Prefab/Player/playership")) as GameObject;
+		playerShip = GameObject.Instantiate(Resources.Load("Prefab/Player/player_ship")) as GameObject;
 		playerShip.GetComponent<Player>().enabled = false;
 		playerShip.transform.position = new Vector3(0, 10000, 0);
 		playerShip.GetComponent<InterfaceActorTemplate>().ActorStats(defaultPlayerShip);
@@ -199,7 +199,7 @@ public class PlayerShipBuild : MonoBehaviour
 
 		for (int i = 0; i < visualWeapons.Length; i++)
 		{
-			// check whether slection made in the selection grid matches so we can see it
+			// check whether selection made in the selection grid matches so we can see it
 			if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName)
 			{
 				visualWeapons[i].SetActive(true);
@@ -231,7 +231,7 @@ public class PlayerShipBuild : MonoBehaviour
 			}
 			DontDestroyOnLoad(playerShip);
 		}
-		UnityEngine.SceneManagement.SceneManager.LoadScene("testlevel");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("testLevel");
 	}
 
 	void CheckPlatform()

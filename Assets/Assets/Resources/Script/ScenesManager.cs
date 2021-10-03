@@ -17,10 +17,15 @@ public class ScenesManager : MonoBehaviour
     }
 
     float gameTimer = 0;
-    float[] endLevelTimer = { 30, 30, 45 };
+    float[] endLevelTimer = { 10, 30, 45 };
     int currentSceneNumber = 0;
     bool gameEnding = false;
 
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
     void Update()
     {
         if (currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
@@ -63,11 +68,11 @@ public class ScenesManager : MonoBehaviour
                             gameEnding = true;
                             if (SceneManager.GetActiveScene().name != "level3")
                             {
-                                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().LevelEnds = true;
+                                GameObject.Find("Player").GetComponent<PlayerTransition>().LevelEnds = true;
                             }
                             else
                             {
-                                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().GameCompleted = true;
+                                GameObject.Find("Player").GetComponent<PlayerTransition>().GameCompleted = true;
                             }
                             Invoke("NextLevel", 4);
                         }
@@ -93,6 +98,11 @@ public class ScenesManager : MonoBehaviour
     public void BeginGame(int gameLevel)
     {
         SceneManager.LoadScene(gameLevel);
+    }
+
+    private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
+    {
+        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
     }
 }
 

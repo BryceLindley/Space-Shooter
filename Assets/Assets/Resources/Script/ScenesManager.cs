@@ -1,55 +1,45 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class ScenesManager : MonoBehaviour {
+public class ScenesManager : MonoBehaviour
+{
 
-	float gameTimer = 0;
-	float[] endLevelTimer = { 30, 30, 45 };
-	int currentSceneNumber = 0;
-	bool gameEnding = false;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
-        {
-			currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
-			GetScene();
-        }
-		GameTimer();
-	}
-
-	Scenes scenes;
-	public enum Scenes
-	{
-		bootUp,
-		title,
-		shop,
-		level1,
-		level2,
-		level3,
-		gameOver
-	}
-
-	public void ResetScene()
-	{
-        gameTimer = 0;
-        SceneManager.LoadScene(GameManager.currentScene);
-	}
-
-	public void GameOver()
-	{
-		Debug.Log("ENDSCORE: " + GameManager.Instance.GetComponent<ScoreManager>().PlayersScore);
-		SceneManager.LoadScene("gameOver");
-	}
-
-	void GetScene()
+  Scenes scenes;
+    public enum Scenes
     {
-		scenes = (Scenes)currentSceneNumber;
+        bootUp,
+        title,
+        shop,
+        level1,
+        level2,
+        level3,
+        gameOver
+    }
+
+    float gameTimer = 0;
+    float[] endLevelTimer = { 30, 30, 45 };
+    int currentSceneNumber = 0;
+    bool gameEnding = false;
+
+    void Update()
+    {
+        if (currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
+        {
+            currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
+            GetScene();
+        }
+        GameTimer();
+    }
+
+    void GetScene()
+    {
+        scenes = (Scenes)currentSceneNumber;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("ENDSCORE:" + GameManager.Instance.GetComponent<ScoreManager>().PlayersScore);
+        SceneManager.LoadScene("gameOver");
     }
 
     void GameTimer()
@@ -94,15 +84,16 @@ public class ScenesManager : MonoBehaviour {
         SceneManager.LoadScene(GameManager.currentScene + 1);
     }
 
+    public void ResetScene()
+    {
+        gameTimer = 0;
+        SceneManager.LoadScene(GameManager.currentScene);
+    }
+
     public void BeginGame(int gameLevel)
     {
         SceneManager.LoadScene(gameLevel);
     }
-
-  
-
-
 }
-
 
 

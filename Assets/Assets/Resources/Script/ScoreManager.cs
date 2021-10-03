@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
 
-    static int playerScore; 
+    static int playerScore;
     public int PlayersScore
     {
         get

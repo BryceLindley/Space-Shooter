@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopPiece : MonoBehaviour
 {
+    /*                      PURPOSE OF SHOPPIECE
+     * 
+     * Each button in the selection grid will be given information from a
+     * scriptable object that will customize the buttons: name, description, value, and image. 
+     */
+
     // Drag and drop each scriptable asset file to its field in the Unity editor
     // refer to the ShopSelection property that will receive and sent its data (get and set)
     [SerializeField]
@@ -9,21 +16,18 @@ public class ShopPiece : MonoBehaviour
 
     void Awake()
     {
-        // icon slot
-        //Inside the function are two if statements; the first checks whether there is a SpriteRenderer component in any of its child game objects.
-        //If there is, then it grabs reference from its shopSelection asset file and applies its icon sprite to display on the button.
-        if (GetComponent<SpriteRenderer>() != null)
+        // applies our scriptable object icon image to our buttons image
+        // The if statement grabs reference from the second child in the 00 button and checks to see if it has an image component. 
+        if(transform.GetChild(3).GetComponent<Image>()!=null)
         {
-            GetComponentInChildren<SpriteRenderer>().sprite = shopSelection.icon;
+            transform.GetChild(3).GetComponent<Image>().sprite = shopSelection.icon;
         }
-        //selection value
-        // The alternative checks whether any of the child game objects of this class have a game object titled itemText. 
-        // If there is a game object titled itemText, we update its TextMesh component's text value with the shopSelection cost value.
-        if (transform.Find("itemText"))
+        // The following if statement makes sure the 00 button has itemText.
+        // When the itemText game object is found, its Text component receives the scriptable object price of the weapon
+        if(transform.Find("itemText"))
         {
-            GetComponentInChildren<TextMesh>().text = shopSelection.cost;
+            GetComponentInChildren<Text>().text = shopSelection.cost.ToString();
         }
-
     }
     public SOShopSelection ShopSelection
     {

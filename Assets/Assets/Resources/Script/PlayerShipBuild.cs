@@ -46,11 +46,11 @@ public class PlayerShipBuild : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            gameId = "REPLACE-THIS-TEXT-FOR-YOUR-IPHONE-GAMEID";
+           // gameId = 71f3b3d8 - bdd4 - 4de6 - 9f58 - ed6e2c81c214;
         }
         else if (Application.platform == RuntimePlatform.Android)
         {
-            gameId = "REPLACE-THIS-TEXT-FOR-YOUR-ANDROID-GAMEID";
+          //  gameId = 71f3b3d8 - bdd4 - 4de6 - 9f58 - ed6e2c81c214;
         }
         Monetization.Initialize(gameId, false);
     }
@@ -158,14 +158,14 @@ public class PlayerShipBuild : MonoBehaviour
         Debug.Log("SOLD OUT");
     }
 
-    void WatchAdvert()
+    public void WatchAdvert()
     {
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
             ShowRewardedAds();
         }
     }
-    void BuyItem()
+    public void BuyItem()
     {
         Debug.Log("PURCHASED");
         purchaseMade = true;
@@ -195,7 +195,7 @@ public class PlayerShipBuild : MonoBehaviour
         shipItem.transform.localPosition = Vector3.zero;
     }
 
-    void StartGame()
+    public void StartGame()
     {
         if (purchaseMade)
         {
@@ -210,7 +210,7 @@ public class PlayerShipBuild : MonoBehaviour
         GameManager.Instance.GetComponent<ScenesManager>().BeginGame(GameManager.gameLevelScene);
     }
 
-    void AttemptSelection()
+    public void AttemptSelection(GameObject buttonName)
     {
         //REMOVED 03
         //
@@ -225,12 +225,18 @@ public class PlayerShipBuild : MonoBehaviour
 
 
         //ENTER if (buttonName) around here code block here
+        if (buttonName)
+        {
+            TurnOffSelectionHighlights();
+            tmpSelection = buttonName;
+            tmpSelection.transform.GetChild(1).gameObject.SetActive(true);
+        }
 
 
         UpdateDescriptionBox();
 
         //not sold
-        if (target.GetComponentInChildren<Text>().text != "SOLD")
+        if (buttonName.GetComponentInChildren<Text>().text != "SOLD")
         {
             //can afford
             Affordable();
@@ -238,7 +244,7 @@ public class PlayerShipBuild : MonoBehaviour
             //can not afford
             LackOfCredits();
         }
-        else if (target.GetComponentInChildren<Text>().text == "SOLD")
+        else if (buttonName.GetComponentInChildren<Text>().text == "SOLD")
         {
             SoldOut();
         }

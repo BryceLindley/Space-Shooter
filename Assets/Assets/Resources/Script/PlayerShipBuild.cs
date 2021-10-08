@@ -26,7 +26,7 @@ public class PlayerShipBuild : MonoBehaviour
         bankObj = GameObject.Find("bank");
         bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
         textBoxPanel = GameObject.Find("textBoxPanel");
-        buyButton = GameObject.Find("BUY?").gameObject;
+        buyButton = GameObject.Find("Buy?").gameObject;
         buyButton.SetActive(false);
         TurnOffPlayerShipVisuals();
         TurnOffSelectionHighlights();
@@ -114,7 +114,7 @@ public class PlayerShipBuild : MonoBehaviour
         {
             if (selections[i].GetComponentInParent<ShopPiece>())
             {
-                if (selections[i].GetComponentInParent<ShopPiece>().ShopSelection.iconName == "sold Out")
+                if (selections[i].GetComponentInParent<ShopPiece>().ShopSelection.iconName == "soldOut")
                 {
                     selections[i].SetActive(false);
                 }

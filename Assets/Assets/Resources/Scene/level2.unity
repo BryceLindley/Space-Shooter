@@ -752,6 +752,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978156337}
+--- !u!1001 &997324035
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387204111374034, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 36111129b31407543a3290fd82fe4035, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1069238500 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4981392010088090, guid: 9b2880c34c78d654da6381c7a5695def,
@@ -1196,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1dd49805bbf1442a9799fa536e925a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicMode: 0
 --- !u!114 &1873371791
 MonoBehaviour:
   m_ObjectHideFlags: 0

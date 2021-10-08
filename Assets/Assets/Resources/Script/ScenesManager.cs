@@ -86,19 +86,16 @@ public class ScenesManager : MonoBehaviour
     {
         switch (scenes)
         {
-
             case Scenes.level1:
-                if (GetComponentInChildren<AudioSource>().clip == null)
-                {
-                    AudioClip lvlMusic = Resources.Load<AudioClip>("Sound/lvlMusic") as AudioClip;
-                    GetComponentInChildren<AudioSource>().clip = lvlMusic;
-                    GetComponentInChildren<AudioSource>().Play();
-
-                }
-                break;
             case Scenes.level2:
             case Scenes.level3:
                 {
+                    if (GetComponentInChildren<AudioSource>().clip == null)
+                    {
+                        AudioClip lvlMusic = Resources.Load<AudioClip>("Sound/lvlMusic") as AudioClip;
+                        GetComponentInChildren<AudioSource>().clip = lvlMusic;
+                        GetComponentInChildren<AudioSource>().Play();
+                    }
                     if (gameTimer < endLevelTimer[currentSceneNumber - 3])
                     {
                         //if level has not completed
@@ -122,8 +119,8 @@ public class ScenesManager : MonoBehaviour
                             Invoke("NextLevel", 4);
                         }
                     }
-                    break;
-                }
+                        break;
+                    }
             default:
                 {
                     GetComponentInChildren<AudioSource>().clip = null;

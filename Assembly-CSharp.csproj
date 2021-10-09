@@ -58,6 +58,7 @@
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\LoadSceneComponent.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\PauseComponent.cs" />
      <Compile Include="Assets\Assets\Resources\Script\Player.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBullet.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerBulletsShot.cs" />

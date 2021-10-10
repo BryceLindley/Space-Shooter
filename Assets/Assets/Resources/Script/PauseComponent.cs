@@ -58,4 +58,18 @@ public class PauseComponent : MonoBehaviour {
 		// sets all moving, animating objects in the scene to 0
 		Time.timeScale = 0;
     }
+
+	public void Resume()
+    {
+		pauseScreen.SetActive(false);
+		SetPauseButtonActive(true);
+		Time.timeScale = 1;
+    }
+
+	public void Quit()
+    {
+		Time.timeScale = 1;
+		GameManager.Instance.GetComponent<ScoreManager>().ResetScore();
+		GameManager.Instance.GetComponent<ScenesManager>().BeginGame(0);
+    }
 }

@@ -56,6 +56,7 @@
      <Compile Include="Assets\Assets\Resources\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\EnemyWave.cs" />
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\GameStats.cs" />
      <Compile Include="Assets\Assets\Resources\Script\InterfaceActorTemplate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\LoadSceneComponent.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PauseComponent.cs" />

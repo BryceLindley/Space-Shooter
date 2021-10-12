@@ -23,7 +23,7 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Attack();
     }

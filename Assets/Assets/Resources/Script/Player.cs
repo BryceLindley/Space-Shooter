@@ -36,6 +36,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
     void Update()
     {
+        if(Time.timeScale == 1) 
          Movement();
          Attack();
     }

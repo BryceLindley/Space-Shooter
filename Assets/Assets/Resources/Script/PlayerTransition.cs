@@ -36,7 +36,8 @@ void Start()
 
 void Distance()
 {
-    journeyLength = Vector3.Distance(startPos, readyPos);
+    journeyLength = Vector3.Distance(startPos, readyPos); 
+
 }
 
 void Update()

@@ -51,16 +51,21 @@ public class GameManager : MonoBehaviour
 		{
 			case 3:
 			case 4:
-			case 5:
+			
 				{
 					LightSetup();
-					CameraSetup();
+					CameraSetup(0);
 					break;
 				}
+			case 5:
+                {
+					CameraSetup(150);
+					break;
+                }
 		}
 	}
 
-	void CameraSetup()
+	void CameraSetup(float camSpeed)
 	{
 		GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
@@ -71,6 +76,7 @@ public class GameManager : MonoBehaviour
 		//Camera Properties
 		gameCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
 		gameCamera.GetComponent<Camera>().backgroundColor = new Color32(0, 0, 0, 255);
+		gameCamera.GetComponent<CameraMovement>().CamSpeed = camSpeed;
 	}
 
 	void LightSetup()

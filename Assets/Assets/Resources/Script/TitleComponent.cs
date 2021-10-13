@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleComponent : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		GameManager.playerLives = 3;
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Fire1"))

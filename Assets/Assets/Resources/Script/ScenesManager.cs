@@ -116,6 +116,8 @@ public class ScenesManager : MonoBehaviour
                             {
                                 GameObject.Find("Player").GetComponent<PlayerTransition>().GameCompleted = true;
                             }
+
+                            SendInJsonFormat(SceneManager.GetActiveScene().name);
                             Invoke("NextLevel", 4);
                         }
                     }
@@ -159,6 +161,23 @@ public class ScenesManager : MonoBehaviour
             GameObject.Find("score").GetComponent<Text>().text = ScoreManager.playerScore.ToString();
         }
     }
+
+    void SendInJsonFormat(string lastLevel)
+    {
+        if(lastLevel == "level3")
+        {
+            GameStats gameStats = new GameStats();
+            gameStats.livesLeft = GameManager.playerLives;
+            gameStats.completed = System.DateTime.Now.ToString();
+            gameStats.score = ScoreManager.playerScore;
+            string json = JsonUtility.ToJson(gameStats, true);
+            Debug.Log(json);
+            Debug.Log(Application.persistentDataPath + "/GameStatsSaved.json");
+            // refer to our local storage then after the function we add the name we want to use to refer to our JSON file
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/GameStatsSaved.json", json);
+        }
+    }
+
 }
 
 

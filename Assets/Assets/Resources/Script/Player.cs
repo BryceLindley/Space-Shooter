@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour, InterfaceActorTemplate
 {
-    int travelSpeed;
+    int travelSpeed = 5;
     int health;
     int hitPower;
     GameObject actor;
@@ -13,6 +13,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     float height;
     private float horizontalInput;
     private float verticalInput;
+    float camTravelSpeed;
+    float movingScreen;
+
+    public float CamTravelSpeed
+    {
+        get { return camTravelSpeed; }
+        set { camTravelSpeed = value; }
+    }
 
     //The two public properties of Health and Fire are there to give access 
     //to our two private health and fire variables from other classes that require access.
@@ -32,13 +40,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         height = 1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).y - .5f);
         width = 1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f);
         _Player = GameObject.Find("_Player");
+        movingScreen = width;
     }
 
     void Update()
     {
-        if(Time.timeScale == 1) 
-         Movement();
-         Attack();
+        if (Time.timeScale == 1)
+            Movement();
+        Attack();
     }
 
     //The code we have just entered assigns values from the player's SOActorModel ScriptableObject asset we made earlier
@@ -93,39 +102,53 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         Destroy(this.gameObject);
     }
 
+
+    //Within the if statement, we increment the player's ship's X-axis
+    //to the right multiplied by Time.deltatime and camTravelSpeed.
     void Movement()
     {
+        if (camTravelSpeed > 1)
+        {
+            transform.position += Vector3.right * Time.deltaTime * camTravelSpeed;
+            movingScreen += Time.deltaTime * camTravelSpeed;
+        }
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            if (transform.localPosition.x < width + width / 0.9f)
+            if(transform.localPosition.x < movingScreen + (width / 0.9F))
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
         }
+
+
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            if (transform.localPosition.x > width + width / 6)
+            if (transform.localPosition.x > movingScreen + width / 6)
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
-        }
-        if (Input.GetAxisRaw("Vertical") < 0 && transform.localPosition.y < 150)
 
-        {
-            transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
         }
 
-        else
+        if (Input.GetAxisRaw("Vertical") < 0)
         {
-
+            if (transform.localPosition.y > -height / 3.0F)
             {
                 transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
         }
-        
+
+        if (Input.GetAxisRaw("Vertical") > 0)
+
+            if (transform.localPosition.y < height / 2.5F)
+            {
+                {
+                    transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
+                }
+            }
     }
-    
+
 
     public void Attack()
     {
@@ -144,7 +167,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
 
 
-    
+
 
 
 

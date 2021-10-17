@@ -51,11 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\RemoteSettings\DriveablePropertyDrawer.cs" />
-     <Compile Include="Assets\Editor\RemoteSettings\RemoteSettingsComponentEditor.cs" />
-     <Compile Include="Assets\Editor\RemoteSettings\RemoteSettingsHolder.cs" />
-     <Compile Include="Assets\Editor\RemoteSettings\RemoteSettingsLinker.cs" />
-     <Compile Include="Assets\Editor\RemoteSettings\RemoteSettingsManager.cs" />
+     <Compile Include="Assets\DefaultPlayables\Editor\TimelinePlayableWizard.cs" />
+     <Compile Include="Assets\DefaultPlayables\LightControl\Editor\LightControlDrawer.cs" />
+     <Compile Include="Assets\DefaultPlayables\ScreenFader\Editor\ScreenFaderDrawer.cs" />
+     <Compile Include="Assets\DefaultPlayables\TextSwitcher\Editor\TextSwitcherDrawer.cs" />
+     <Compile Include="Assets\DefaultPlayables\TimeDilation\Editor\TimeDilationDrawer.cs" />
+     <Compile Include="Assets\DefaultPlayables\TransformTween\Editor\TransformTweenDrawer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

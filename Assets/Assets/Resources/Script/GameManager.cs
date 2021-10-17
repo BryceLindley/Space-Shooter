@@ -53,8 +53,9 @@ public class GameManager : MonoBehaviour
 			case 4:
 			
 				{
-					LightSetup();
 					CameraSetup(0);
+					LightSetup();
+					
 					break;
 				}
 			case 5:
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
 	void CameraSetup(float camSpeed)
 	{
 		GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
-
+		gameCamera.GetComponent<CameraMovement>().CamSpeed = camSpeed;
 		//Camera Transform
 		gameCamera.transform.position = new Vector3(0, 0, -300);
 		gameCamera.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 		//Camera Properties
 		gameCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
 		gameCamera.GetComponent<Camera>().backgroundColor = new Color32(0, 0, 0, 255);
-		gameCamera.GetComponent<CameraMovement>().CamSpeed = camSpeed;
+		
 	}
 
 	void LightSetup()

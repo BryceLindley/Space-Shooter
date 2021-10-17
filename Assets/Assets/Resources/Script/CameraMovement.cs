@@ -15,7 +15,23 @@ public class CameraMovement : MonoBehaviour
 		Invoke("DelayStart",7.0F);
 	}
 
-	void DelayStart()
+    void Update()
+    {
+        if (beginMoving)
+        {
+            if (transform.position.x < 5350)
+            {
+                transform.Translate(Vector3.right * Time.deltaTime * camSpeed);
+            }
+            else
+            {
+                beginMoving = false;
+                GameObject.Find("PlayerSpawner").GetComponentInChildren<Player>().CamTravelSpeed = 2;
+
+            }
+        }
+    }
+    void DelayStart()
 	{
 		beginMoving = true;
 		if (GameObject.Find("Player"))
@@ -25,20 +41,4 @@ public class CameraMovement : MonoBehaviour
 	
 	}
 
-	void Update()
-	{
-		if (beginMoving)
-		{
-			if (transform.position.x < 5350)
-			{
-				transform.Translate(Vector3.right * Time.deltaTime * camSpeed);	
-			}
-			else
-			{
-				beginMoving = false;
-				GameObject.Find("PlayerSpawner").GetComponentInChildren<Player>().CamTravelSpeed = 0;
-
-			}	
-		}
-	}
 }

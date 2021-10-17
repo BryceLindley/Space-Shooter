@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour, InterfaceActorTemplate
 {
-    int travelSpeed = 5;
+    int travelSpeed;
     int health;
     int hitPower;
     GameObject actor;
@@ -11,8 +11,6 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     GameObject _Player;
     float width;
     float height;
-    private float horizontalInput;
-    private float verticalInput;
     float camTravelSpeed;
     float movingScreen;
 
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     void Update()
     {
         if (Time.timeScale == 1)
-            Movement();
+        Movement();
         Attack();
     }
 
@@ -109,13 +107,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     {
         if (camTravelSpeed > 1)
         {
-            transform.position += Vector3.right * Time.deltaTime * camTravelSpeed;
+            transform.position += Vector3.right * Time.deltaTime * camTravelSpeed * 2;
             movingScreen += Time.deltaTime * camTravelSpeed;
+         
         }
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            if(transform.localPosition.x < movingScreen + (width / 0.9F))
+            if(transform.localPosition.x < movingScreen + (width))
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
@@ -124,7 +123,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            if (transform.localPosition.x > movingScreen + width / 6)
+            if (transform.localPosition.x > movingScreen + width)
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
@@ -133,7 +132,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            if (transform.localPosition.y > -height / 3.0F)
+            if (transform.localPosition.y > -height)
             {
                 transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
@@ -141,7 +140,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
         if (Input.GetAxisRaw("Vertical") > 0)
 
-            if (transform.localPosition.y < height / 2.5F)
+            if (transform.localPosition.y < height)
             {
                 {
                     transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);

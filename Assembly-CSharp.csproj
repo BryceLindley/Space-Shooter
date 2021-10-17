@@ -54,6 +54,7 @@
      <Compile Include="Assets\Assets\Resources\Script\BasicEnemyRotate.cs" />
      <Compile Include="Assets\Assets\Resources\Script\BShotComponent.cs" />
      <Compile Include="Assets\Assets\Resources\Script\CameraMovement.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\EnemyFlee.cs" />
      <Compile Include="Assets\Assets\Resources\Script\EnemySpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\EnemyWave.cs" />
      <Compile Include="Assets\Assets\Resources\Script\GameManager.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Assets\Resources\Script\PlayerShipBuild_OLD.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerSpawner.cs" />
      <Compile Include="Assets\Assets\Resources\Script\PlayerTransition.cs" />
+     <Compile Include="Assets\Assets\Resources\Script\RadarRotation.cs" />
      <Compile Include="Assets\Assets\Resources\Script\RemoteSettingsStartup.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScenesManager.cs" />
      <Compile Include="Assets\Assets\Resources\Script\ScoreManager.cs" />
@@ -77,8 +79,6 @@
      <Compile Include="Assets\Assets\Resources\Script\TitleComponent.cs" />
      <Compile Include="Assets\Resources\Script\BossScript.cs" />
      <Compile Include="Assets\Resources\Script\BossTriggerBox.cs" />
-     <Compile Include="Assets\Resources\Script\EnemyFlee.cs" />
-     <Compile Include="Assets\Resources\Script\RadarRotation.cs" />
      <None Include="Assets\UnityAds\link.xml" />
      <None Include="Assets\Resources\Script\PlayerShipBuild.txt" />
  <Reference Include="UnityEngine.UI">

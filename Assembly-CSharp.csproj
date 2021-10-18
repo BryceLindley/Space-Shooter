@@ -107,6 +107,8 @@
      <Compile Include="Assets\DefaultPlayables\Video\VideoScriptPlayableAsset.cs" />
      <Compile Include="Assets\DefaultPlayables\Video\VideoScriptPlayableTrack.cs" />
      <Compile Include="Assets\Resources\Script\BossTriggerBox.cs" />
+     <Compile Include="Assets\Resources\Script\SelfDestruct.cs" />
+     <Compile Include="Assets\Resources\Script\TurnOnPhysics.cs" />
      <None Include="Assets\UnityAds\link.xml" />
      <None Include="Assets\Resources\Script\PlayerShipBuild.txt" />
  <Reference Include="UnityEngine.UI">

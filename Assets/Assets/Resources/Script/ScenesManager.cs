@@ -108,6 +108,13 @@ public class ScenesManager : MonoBehaviour
                         if (!gameEnding)
                         {
                             gameEnding = true;
+                            // cache a reference from our player_ship game object
+                            GameObject player = GameObject.Find("Player");
+                            // access the player_ship rigidbody component and set isKinemtatic to true
+                            player.GetComponent<Rigidbody>().isKinematic = true;
+                            Player.mobile = false;
+                            // stops auto fire
+                            CancelInvoke();
                             if (SceneManager.GetActiveScene().name != "level3")
                             {
                                 GameObject.Find("Player").GetComponent<PlayerTransition>().LevelEnds = true;

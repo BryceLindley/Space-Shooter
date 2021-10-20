@@ -13,4 +13,11 @@ public class TitleComponent : MonoBehaviour {
         }
 	}
 
+	void Start()
+    {
+		if (GameManager.playerLives <= 2)
+			GameManager.playerLives = 3;
+
+    }
+
 }

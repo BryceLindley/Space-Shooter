@@ -43,19 +43,19 @@ MonoBehaviour:
     value: 6.1
   threshold:
     overrideState: 1
-    value: 1.14
+    value: 1.5
   softKnee:
     overrideState: 1
-    value: 0.417
+    value: 0.525
   clamp:
-    overrideState: 0
-    value: -3705
+    overrideState: 1
+    value: 65472
   diffusion:
     overrideState: 1
-    value: 10
+    value: 8.2
   anamorphicRatio:
     overrideState: 1
-    value: 0.96
+    value: -0.39
   color:
     overrideState: 1
     value: {r: 1, g: 0, b: 0, a: 1}
@@ -64,7 +64,7 @@ MonoBehaviour:
     value: 1
   dirtTexture:
     overrideState: 1
-    value: {fileID: 2800000, guid: 207cfef1caffafe4b90f5b358ab27ca6, type: 3}
+    value: {fileID: 2800000, guid: 332cc470e66474244932587f4f72db6a, type: 3}
     defaultState: 1
   dirtIntensity:
     overrideState: 1
@@ -96,7 +96,7 @@ MonoBehaviour:
     value: 2
   toneCurveToeStrength:
     overrideState: 1
-    value: 0
+    value: 0.63
   toneCurveToeLength:
     overrideState: 1
     value: 0.5
@@ -121,7 +121,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 81
+    value: 7
   tint:
     overrideState: 1
     value: 38
@@ -172,10 +172,10 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.10813105, y: 1, z: 0, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 0.56705886, z: 0, w: 0}
   gain:
     overrideState: 1
     value: {x: 1, y: 1, z: 1, w: 0}

@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Assembly-CSharp.csproj", "{28FCF307-BCEB-DF00-C466-08C29A16E02D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Unity.Postprocessing.Runtime.csproj", "{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Unity.Postprocessing.Runtime.Tests.csproj", "{4B47D52D-2D54-F6C7-2E06-768185A13DA2}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Assembly-CSharp-Editor.csproj", "{6752D7FE-63E4-475F-2082-7005DF7313CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Unity.Postprocessing.Editor.csproj", "{E02AD144-8149-3180-E3B0-37E02FC07AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Shooter", "Unity.Postprocessing.Editor.Tests.csproj", "{4147ADD1-496D-2F27-B274-E043C8BD00A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +23,26 @@ Global
 		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28FCF307-BCEB-DF00-C466-08C29A16E02D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B47D52D-2D54-F6C7-2E06-768185A13DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B47D52D-2D54-F6C7-2E06-768185A13DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B47D52D-2D54-F6C7-2E06-768185A13DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B47D52D-2D54-F6C7-2E06-768185A13DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6752D7FE-63E4-475F-2082-7005DF7313CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6752D7FE-63E4-475F-2082-7005DF7313CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6752D7FE-63E4-475F-2082-7005DF7313CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6752D7FE-63E4-475F-2082-7005DF7313CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02AD144-8149-3180-E3B0-37E02FC07AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02AD144-8149-3180-E3B0-37E02FC07AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02AD144-8149-3180-E3B0-37E02FC07AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02AD144-8149-3180-E3B0-37E02FC07AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4147ADD1-496D-2F27-B274-E043C8BD00A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4147ADD1-496D-2F27-B274-E043C8BD00A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4147ADD1-496D-2F27-B274-E043C8BD00A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4147ADD1-496D-2F27-B274-E043C8BD00A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour
 	
 	void Awake()
 	{
+#if UNITY_ANDROID
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+#endif
 		CheckGameManagerIsInTheScene();
 		currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
 		LightandCameraSetup(currentScene);
@@ -89,19 +93,7 @@ public class GameManager : MonoBehaviour
 
 	public void LifeLost()
 	{
-		//lose life
-		if (playerLives >= 1)
-		{
-			playerLives--;
-			Debug.Log("Lives left:" + playerLives);
-			GetComponent<ScenesManager>().ResetScene();
-		}
-		else
-		{
-			GetComponent<ScenesManager>().GameOver();
-			//reset lives back to 3. 
-			playerLives = 3;
-		}
+		StartCoroutine(DelayedLifeLost());
 	}
 
 	public void SetLivesDisplay(int players)
@@ -128,5 +120,24 @@ public class GameManager : MonoBehaviour
 				lives.transform.GetChild(lives.transform.childCount - i - 1).localScale = Vector3.zero;
             }
         }
+    }
+
+	IEnumerator DelayedLifeLost()
+    {
+		yield return new WaitForSeconds(2);
+        //lose life
+        if (playerLives >= 1)
+        {
+            playerLives--;
+            Debug.Log("Lives left:" + playerLives);
+            GetComponent<ScenesManager>().ResetScene();
+        }
+        else
+        {
+            GetComponent<ScenesManager>().GameOver();
+            //reset lives back to 3. 
+            playerLives = 3;
+        }
+
     }
 }

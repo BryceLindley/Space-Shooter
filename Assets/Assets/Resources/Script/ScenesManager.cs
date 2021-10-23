@@ -84,6 +84,7 @@ public class ScenesManager : MonoBehaviour
 
     void GameTimer()
     {
+        gameTimer = 0;
         switch (scenes)
         {
             case Scenes.level1:

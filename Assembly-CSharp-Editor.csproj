@@ -166,14 +166,14 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{28FCF307-BCEB-DF00-C466-08C29A16E02D}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Editor.Tests.csproj">
-      <Project>{4147ADD1-496D-2F27-B274-E043C8BD00A9}</Project>      <Name>Unity.Postprocessing.Editor.Tests</Name>    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Runtime.Tests.csproj">
+      <Project>{4B47D52D-2D54-F6C7-2E06-768185A13DA2}</Project>      <Name>Unity.Postprocessing.Runtime.Tests</Name>    </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
       <Project>{E02AD144-8149-3180-E3B0-37E02FC07AF7}</Project>      <Name>Unity.Postprocessing.Editor</Name>    </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
       <Project>{CF9C7FA1-71A1-AEA1-C38B-D7DC73DFD036}</Project>      <Name>Unity.Postprocessing.Runtime</Name>    </ProjectReference>
-    <ProjectReference Include="Unity.Postprocessing.Runtime.Tests.csproj">
-      <Project>{4B47D52D-2D54-F6C7-2E06-768185A13DA2}</Project>      <Name>Unity.Postprocessing.Runtime.Tests</Name>    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Editor.Tests.csproj">
+      <Project>{4147ADD1-496D-2F27-B274-E043C8BD00A9}</Project>      <Name>Unity.Postprocessing.Editor.Tests</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

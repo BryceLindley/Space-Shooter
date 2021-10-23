@@ -140,14 +140,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            if(transform.localPosition.x < movingScreen + (screenPoints[1].transform.localPosition.x - screenPoints[1].transform.localPosition.x / 30.0F) + movingScreen)
+            if(transform.localPosition.x < movingScreen + (screenPoints[1].transform.localPosition.x - screenPoints[1].transform.localPosition.x / 3000.0F) + movingScreen)
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            if (transform.localPosition.x < (screenPoints[1].transform.localPosition.x - screenPoints[1].transform.localPosition.x / 30.0F) + movingScreen)
+            if (transform.localPosition.x < (screenPoints[1].transform.localPosition.x - screenPoints[1].transform.localPosition.x / 3000.0F) + movingScreen)
             {
                 transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime * travelSpeed, 0, 0);
             }
@@ -155,14 +155,14 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            if (transform.localPosition.y > (screenPoints[1].transform.localPosition.y - screenPoints[1].transform.localPosition.y / 3.0F))
+            if (transform.localPosition.y > (screenPoints[1].transform.localPosition.y - screenPoints[1].transform.localPosition.y / 3000.0F))
             {
                 transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
             }
         }
         if (Input.GetAxisRaw("Vertical") > 0)
 
-            if (transform.localPosition.y < (screenPoints[0].transform.localPosition.y - screenPoints[0].transform.localPosition.y / 5.0F))
+            if (transform.localPosition.y < (screenPoints[0].transform.localPosition.y - screenPoints[0].transform.localPosition.y / 5500.0F))
             {
                 {
                     transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);

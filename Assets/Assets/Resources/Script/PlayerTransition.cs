@@ -4,17 +4,17 @@ using UnityEngine;
 public class PlayerTransition : MonoBehaviour
 {
     Vector3 transitionToEnd = new Vector3(-100, 0, 0);
-Vector3 transitionToCompleteGame = new Vector3(7000, 0, 0);
-Vector3 readyPos = new Vector3(900, 0, 0);
-Vector3 startPos;
+    Vector3 transitionToCompleteGame = new Vector3(7000, 0, 0);
+    Vector3 readyPos = new Vector3(900, 0, 0);
+    Vector3 startPos;
 
-float distCovered;
-float journeyLength;
+    float distCovered;
+    float journeyLength;
 
-bool levelStarted = true;
-bool speedOff = false;
-bool levelEnds = false;
-bool gameCompleted = false;
+    bool levelStarted = true;
+    bool speedOff = false;
+    bool levelEnds = false;
+    bool gameCompleted = false;
 
 public bool LevelEnds
 {
@@ -49,8 +49,10 @@ void Update()
 
     if (levelEnds)
     {
+       
         GetComponent<Player>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
+     
         Distance();
         StartCoroutine(PlayerMovement(transitionToEnd, 200));
     }

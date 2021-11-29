@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,9 +15,10 @@ MonoBehaviour:
   actorName: enemy_wave
   attackType: 0
   description: Typically in groups
-  health: 1
-  speed: -100
-  hitPower: 1
+  health: 5
+  speed: -250
+  hitPower: 2
   score: 250
-  actor: {fileID: 1580248993727616, guid: ac64378d0d54dbb4097f442155e15e6d, type: 2}
-  actorsBullets: {fileID: 0}
+  actor: {fileID: 1580248993727616, guid: ac64378d0d54dbb4097f442155e15e6d, type: 3}
+  actorsBullets: {fileID: 8958230744005656641, guid: fd051977b9fbefc40af21efabe879799,
+    type: 3}

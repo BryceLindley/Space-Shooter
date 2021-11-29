@@ -10,16 +10,17 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate
     int score;
     //wave enemy
     [SerializeField]
-    float verticalSpeed = 2;
+    float verticalSpeed = 4;
     [SerializeField]
-    float verticalAmplitude = 1;
+    float verticalAmplitude = 3;
     Vector3 sineVer;
     float time;
+    AudioSource hitSound;
 
     // Use this for initialization
     void Start()
     {
-
+        hitSound.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +42,11 @@ public class EnemyWave : MonoBehaviour, InterfaceActorTemplate
         GameObject explode = GameObject.Instantiate(Resources.Load("Prefab/explode")) as GameObject;
         explode.transform.position = this.gameObject.transform.position;
         Destroy(this.gameObject);
+        hitSound.Play();
+        
+        
+
+
     }
 
     void OnTriggerEnter(Collider other)

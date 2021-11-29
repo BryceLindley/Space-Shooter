@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.Collections;
 public class ScenesManager : MonoBehaviour
 {
     float gameTimer = 0;
-    float[] endLevelTimer = { 10, 30, 45 };
+    float[] endLevelTimer = { 30, 30, 45 };
     int currentSceneNumber = 0;
     bool gameEnding = false;
 
@@ -28,20 +27,15 @@ public class ScenesManager : MonoBehaviour
         noSound, fadeDown, musicOn
     }
 
-    void Start()
+    private void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
     {
         StartCoroutine(MusicVolume(MusicMode.musicOn));
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
-    }
-    void Update()
-    {
-        if (currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
+        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
+        if (GameObject.Find("score"))
         {
-            currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
-            GetScene();
+            GameObject.Find("score").GetComponent<Text>().text = ScoreManager.playerScore.ToString();
         }
-        GameTimer();
     }
 
     IEnumerator MusicVolume(MusicMode musicMode)
@@ -50,7 +44,7 @@ public class ScenesManager : MonoBehaviour
         {
             case MusicMode.noSound:
                 {
-                    GetComponent<AudioSource>().Stop();
+                    GetComponentInChildren<AudioSource>().Stop();
                     break;
                 }
             case MusicMode.fadeDown:
@@ -68,7 +62,23 @@ public class ScenesManager : MonoBehaviour
                     break;
                 }
         }
-        yield return new WaitForSeconds(0.1F);
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    void Start()
+    {
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Update()
+    {
+        if (currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
+        {
+            currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
+            GetScene();
+        }
+        GameTimer();
     }
 
     void GetScene()
@@ -80,11 +90,11 @@ public class ScenesManager : MonoBehaviour
     {
         Debug.Log("ENDSCORE:" + GameManager.Instance.GetComponent<ScoreManager>().PlayersScore);
         SceneManager.LoadScene("gameOver");
+        GameManager.playerLives = 3;
     }
 
     void GameTimer()
     {
-        gameTimer = 0;
         switch (scenes)
         {
             case Scenes.level1:
@@ -93,9 +103,9 @@ public class ScenesManager : MonoBehaviour
                 {
                     if (GetComponentInChildren<AudioSource>().clip == null)
                     {
-                        AudioClip lvlMusic = Resources.Load<AudioClip>("Sound/lvlMusic") as AudioClip;
-                        GetComponentInChildren<AudioSource>().clip = lvlMusic;
-                        GetComponentInChildren<AudioSource>().Play();
+                       // AudioClip lvlMusic = Resources.Load<AudioClip>("Sound/lvlMusic") as AudioClip;
+                      //  GetComponentInChildren<AudioSource>().clip = lvlMusic;
+                     //   GetComponentInChildren<AudioSource>().Play();
                     }
                     if (gameTimer < endLevelTimer[currentSceneNumber - 3])
                     {
@@ -106,36 +116,53 @@ public class ScenesManager : MonoBehaviour
                     {
                         //if level is completed
                         StartCoroutine(MusicVolume(MusicMode.fadeDown));
-                        if (!gameEnding)
+                        if (!gameEnding && GameObject.Find("Player"))
                         {
                             gameEnding = true;
-                            // cache a reference from our player_ship game object
                             GameObject player = GameObject.Find("Player");
-                            // access the player_ship rigidbody component and set isKinemtatic to true
+                            player.GetComponent<Player>().enabled = false;
                             player.GetComponent<Rigidbody>().isKinematic = true;
                             Player.mobile = false;
-                            // stops auto fire
                             CancelInvoke();
+
                             if (SceneManager.GetActiveScene().name != "level3")
                             {
-                                GameObject.Find("Player").GetComponent<PlayerTransition>().LevelEnds = true;
+                                player.GetComponent<PlayerTransition>().LevelEnds = true;
                             }
                             else
                             {
-                                GameObject.Find("Player").GetComponent<PlayerTransition>().GameCompleted = true;
+                                player.GetComponent<PlayerTransition>().GameCompleted = true;
                             }
 
                             SendInJsonFormat(SceneManager.GetActiveScene().name);
+
                             Invoke("NextLevel", 4);
                         }
                     }
-                        break;
-                    }
+                    break;
+                }
             default:
                 {
                     GetComponentInChildren<AudioSource>().clip = null;
                     break;
                 }
+        }
+    }
+
+    void SendInJsonFormat(string lastLevel)
+    {
+        if (lastLevel == "level3")
+        {
+            GameStats gameStats = new GameStats();
+
+            gameStats.livesLeft = GameManager.playerLives;
+            gameStats.completed = System.DateTime.Now.ToString();
+            gameStats.score = ScoreManager.playerScore;
+
+            string json = JsonUtility.ToJson(gameStats, true);
+            Debug.Log(json);
+            Debug.Log(Application.persistentDataPath + "/GameStatsSaved.json");
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/GameStatsSaved.json", json);
         }
     }
 
@@ -156,36 +183,7 @@ public class ScenesManager : MonoBehaviour
 
     public void BeginGame(int gameLevel)
     {
+        gameTimer = 0;
         SceneManager.LoadScene(gameLevel);
     }
-
-    public void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
-    {
-        StartCoroutine(MusicVolume(MusicMode.musicOn));
-        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
-
-        if (GameObject.Find("score"))
-        {
-            GameObject.Find("score").GetComponent<Text>().text = ScoreManager.playerScore.ToString();
-        }
-    }
-
-    void SendInJsonFormat(string lastLevel)
-    {
-        if(lastLevel == "level3")
-        {
-            GameStats gameStats = new GameStats();
-            gameStats.livesLeft = GameManager.playerLives;
-            gameStats.completed = System.DateTime.Now.ToString();
-            gameStats.score = ScoreManager.playerScore;
-            string json = JsonUtility.ToJson(gameStats, true);
-            Debug.Log(json);
-            Debug.Log(Application.persistentDataPath + "/GameStatsSaved.json");
-            // refer to our local storage then after the function we add the name we want to use to refer to our JSON file
-            System.IO.File.WriteAllText(Application.persistentDataPath + "/GameStatsSaved.json", json);
-        }
-    }
-
 }
-
-

@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     int travelSpeed;
     int health;
     int hitPower;
-    GameObject actor;
+    static public Player instance;
     GameObject fire;
     // reference to the _Player game object in the scene
     GameObject _Player;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
     public static bool mobile = false;
     // holds two points to represent our screen's boundaries
     GameObject[] screenPoints = new GameObject[2];
+
 
 
     public float CamTravelSpeed
@@ -53,12 +54,15 @@ public class Player : MonoBehaviour, InterfaceActorTemplate
         rb = GetComponent<Rigidbody>();
         #endif
 
-       
-        // height = 1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).y - .5f);
-        // width = 1 / (Camera.main.WorldToViewportPoint(new Vector3(1, 1, 0)).x - .5f);
-        _Player = GameObject.Find("_Player");
-        // movingScreen = width;
+        _Player = GameObject.Find("_Player");  
         CalculateBoundaries();
+       // UIController.instance.healthSlider.maxValue = maxhealth;
+       // UIController.instance.healthSlider.value = currentHealth;
+    }
+
+    void Awake()
+    {
+        instance = this;
     }
 
     void Update()

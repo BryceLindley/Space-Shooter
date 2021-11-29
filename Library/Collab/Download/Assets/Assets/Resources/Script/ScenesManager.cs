@@ -1,0 +1,202 @@
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class ScenesManager : MonoBehaviour
+{
+    float gameTimer = 5;
+    float[] endLevelTimer = { 10, 30, 45 };
+    int currentSceneNumber = 0;
+    bool gameEnding = false;
+
+    Scenes scenes;
+    public enum Scenes
+    {
+        bootUp,
+        title,
+        shop,
+        level1,
+        level2,
+        level3,
+        gameOver
+    }
+
+    public MusicMode musicMode;
+    public enum MusicMode
+    {
+        noSound, fadeDown, musicOn
+    }
+
+    void Start()
+    {
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+    void Update()
+    {
+        if (currentSceneNumber != SceneManager.GetActiveScene().buildIndex)
+        {
+            currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
+            GetScene();
+        }
+        GameTimer();
+    }
+
+    IEnumerator MusicVolume(MusicMode musicMode)
+    {
+        switch (musicMode)
+        {
+            case MusicMode.noSound:
+                {
+                    GetComponent<AudioSource>().Stop();
+                    break;
+                }
+            case MusicMode.fadeDown:
+                {
+                    GetComponentInChildren<AudioSource>().volume -= Time.deltaTime / 3;
+                    break;
+                }
+            case MusicMode.musicOn:
+                {
+                    if (GetComponentInChildren<AudioSource>().clip != null)
+                    {
+                        GetComponentInChildren<AudioSource>().Play();
+                        GetComponentInChildren<AudioSource>().volume = 1;
+                    }
+                    break;
+                }
+        }
+        yield return new WaitForSeconds(0.1F);
+    }
+
+    void GetScene()
+    {
+        scenes = (Scenes)currentSceneNumber;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("ENDSCORE:" + GameManager.Instance.GetComponent<ScoreManager>().PlayersScore);
+        SceneManager.LoadScene("gameOver");
+    }
+
+    void GameTimer()
+    {
+        gameTimer = 0;
+        switch (scenes)
+        {
+            case Scenes.level1:
+            case Scenes.level2:
+            case Scenes.level3:
+                {
+                    if (GetComponentInChildren<AudioSource>().clip == null)
+                    {
+                        AudioClip lvlMusic = Resources.Load<AudioClip>("Sound/lvlMusic") as AudioClip;
+                        GetComponentInChildren<AudioSource>().clip = lvlMusic;
+                        GetComponentInChildren<AudioSource>().Play();
+                    }
+                    if (gameTimer < endLevelTimer[currentSceneNumber - 3])
+                    {
+                        //if level has not completed
+                        gameTimer += Time.deltaTime;
+                    }
+                    else
+                    {
+                        //if level is completed
+                        StartCoroutine(MusicVolume(MusicMode.fadeDown));
+                        if (!gameEnding)
+                        {
+                            gameEnding = true;
+                            // cache a reference from our player_ship game object
+                            GameObject player = GameObject.Find("Player");
+                            // access the player_ship rigidbody component and set isKinemtatic to true
+                            player.GetComponent<Rigidbody>().isKinematic = true;
+                            Player.mobile = false;
+                            // stops auto fire
+                            CancelInvoke();
+                            if (SceneManager.GetActiveScene().name != "level3")
+                            {
+                                GameObject.Find("Player").GetComponent<PlayerTransition>().LevelEnds = true;
+                            }
+                            else
+                            {
+                                GameObject.Find("Player").GetComponent<PlayerTransition>().GameCompleted = true;
+                            }
+
+                            SendInJsonFormat(SceneManager.GetActiveScene().name);
+                            Invoke("NextLevel", 4);
+                        }
+                    }
+                        break;
+                    }
+            default:
+                {
+                    GetComponentInChildren<AudioSource>().clip = null;
+                    break;
+                }
+        }
+    }
+
+    void NextLevel()
+    {
+        gameEnding = false;
+        gameTimer = 0;
+        UIController.instance.StartFadeToBlack();
+        SceneManager.LoadScene(GameManager.currentScene + 1);
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
+    }
+
+    public void ResetScene()
+    {
+        Fade.instance.FadeMe();
+        StartCoroutine(MusicVolume(MusicMode.noSound));
+        gameTimer = 0;
+        SceneManager.LoadScene(GameManager.currentScene);
+    }
+
+    public void BeginGame(int gameLevel)
+    {
+        SceneManager.LoadScene(gameLevel);
+    }
+
+    public void OnSceneLoaded(Scene aScene, LoadSceneMode aMode)
+    {
+        StartCoroutine(MusicVolume(MusicMode.musicOn));
+        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
+
+        if (GameObject.Find("score"))
+        {
+            GameObject.Find("score").GetComponent<Text>().text = ScoreManager.playerScore.ToString();
+        }
+    }
+
+    void SendInJsonFormat(string lastLevel)
+    {
+        if(lastLevel == "level3")
+        {
+            GameStats gameStats = new GameStats();
+            gameStats.livesLeft = GameManager.playerLives;
+            gameStats.completed = System.DateTime.Now.ToString();
+            gameStats.score = ScoreManager.playerScore;
+            string json = JsonUtility.ToJson(gameStats, true);
+            Debug.Log(json);
+            Debug.Log(Application.persistentDataPath + "/GameStatsSaved.json");
+            // refer to our local storage then after the function we add the name we want to use to refer to our JSON file
+            System.IO.File.WriteAllText(Application.persistentDataPath + "/GameStatsSaved.json", json);
+        }
+    }
+
+    public IEnumerator levelEnd ()
+    {
+        UIController.instance.StartFadeToBlack();
+        yield return new WaitForSeconds(2);
+
+    }
+
+
+
+}
+
+

@@ -5,20 +5,40 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] SOActorModel actorModel;
     [SerializeField] float spawnRate;
-    [SerializeField] [Range(0, 10)] int quantity;
+    [SerializeField] [Range(0, 100)] int quantity;
     GameObject enemies;
+    GameObject fire;
+    public Rigidbody theRB;
+    public Animator anim;
+    public GameObject[] deathSplatters;
+    public GameObject hitEffect;
+    public bool shouldShoot;
+    public GameObject bullet;
+    public Transform firePoint;
+    public float fireRate;
+    private float fireCounter;
+    bool StopExploding;
+    public float time = 5;
 
-
-    // Use this for initialization
-    void Start()
+    public GameObject Fire
     {
-
+        get { return fire; }
+        set { fire = value; }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-
+       if(shouldShoot)
+        {
+            fireCounter -= Time.deltaTime;
+            if(fireCounter <= 0)
+            {
+                fireCounter = fireRate;
+                Instantiate(bullet, transform.position, transform.rotation);
+            }
+        }
     }
 
     void Awake()
@@ -47,6 +67,8 @@ public class EnemySpawner : MonoBehaviour
         enemy.name = actorModel.actorName.ToString();
         return enemy;
     }
+
+  
 }
 
 

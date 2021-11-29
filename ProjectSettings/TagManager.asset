@@ -18,8 +18,8 @@ TagManager:
   - PlayerShip
   - Enemy
   - Radar
-  - 
-  - 
+  - EnemyBullet
+  - PlayerBullet
   - 
   - 
   - 
